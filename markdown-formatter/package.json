@@ -2,7 +2,7 @@
   "name": "doc-platform-markdown-optimizer",
   "displayName": "文档平台导出的 Markdown 文件格式优化器",
   "description": "专注于优化文档平台导出的 Markdown 文件格式，清理多余标签和符号，优化换行和空行，让导入到其他编辑器或博客系统的文档更加规整。",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -17,6 +17,10 @@
         "command": "doc-platform-markdown-optimizer.format",
           "title": "优化Markdown文件格式"
 
+      },
+      {
+        "command": "doc-platform-markdown-optimizer.formatCubox",
+        "title": "优化Cubox导出Markdown文件"
       }
     ],
     "menus": {
@@ -24,6 +28,11 @@
         {
           "when": "resourceLangId == markdown",
           "command": "doc-platform-markdown-optimizer.format",
+          "group": "1_modification"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "doc-platform-markdown-optimizer.formatCubox",
           "group": "1_modification"
         }
       ]

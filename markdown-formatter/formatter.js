@@ -125,4 +125,4 @@ class MarkdownFormatter {
     }
 }
 
-module.exports = new MarkdownFormatter();
+module.exports = { MarkdownFormatter };

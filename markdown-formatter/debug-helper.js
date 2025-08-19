@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const formatter = require('./formatter');
+const { MarkdownFormatter } = require('./formatter');
+const formatter = new MarkdownFormatter();
 
 // 读取测试文件
 const testFilePath = path.join(__dirname, 'test.md');
