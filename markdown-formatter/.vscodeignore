@@ -1,0 +1,8 @@
+node_modules/
+.vscode/
+.git/
+.gitignore
+package-lock.json
+README.md
+test.md
+debug-helper.js
