@@ -43,7 +43,12 @@ class CuboxMarkdownFormatter extends MarkdownFormatter {
      */
     convertSpecialFormats(text) {
         // 将"*\n  •"格式转换为"+"列表项
-        return text.replace(/\*\n  •/g, '+');
+        text = text.replace(/\*\n  •/g, '+');
+        
+        // 将"  *\n    •"格式转换为"  -"列表项
+        text = text.replace(/  \*\n    •/g, '  -');
+        
+        return text;
     }
 }
 
