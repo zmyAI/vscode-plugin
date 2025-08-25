@@ -13,13 +13,16 @@ class CuboxMarkdownFormatter extends MarkdownFormatter {
     formatCubox(text) {
         let result = text;
         
-        // 1. 移除Cubox特有标记 [mp.weixin.qq.com]
+        // 1. 统一换行符为Unix格式（LF）
+        result = super.normalizeLineEndings(result);
+        
+        // 2. 移除Cubox特有标记 [mp.weixin.qq.com]
         result = this.removeCuboxSourceTags(result);
         
-        // 2. 转换特定格式（如将"*\n  •"转换为"+"）
+        // 3. 转换特定格式（如将"*\n  •"转换为"+"）
         result = this.convertSpecialFormats(result);
         
-        // 3. 调用基础格式化方法进行通用格式化
+        // 4. 调用基础格式化方法进行通用格式化
         result = super.format(result);
         
         return result;

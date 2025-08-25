@@ -10,10 +10,10 @@ class MarkdownFormatter {
     format(text) {
         let result = text;
 
-        // 1. 统一换行符为系统默认
+        // 1. 统一换行符为Unix格式（LF）
         result = this.normalizeLineEndings(result);
 
-        // 2. 删除特定HTML标签 (如 <font>)
+        // 2. 删除特定HTML标签 (如 <font>、<br />)
         result = this.removeSpecificHtmlTags(result);
 
         // 3. 移除多余的符号 (如 ** 加粗符号)
@@ -54,8 +54,8 @@ class MarkdownFormatter {
     removeSpecificHtmlTags(text) {
         // 删除font标签，但保留其内容
         text = text.replace(/<\/?font[^>]*>/g, '');
-
-        // 可以在这里添加其他需要删除的HTML标签
+        // 删除br标签
+        text = text.replace(/<br \/>/g, '\n');
 
         return text;
     }
@@ -86,6 +86,7 @@ class MarkdownFormatter {
      */
     handleHorizontalRules(text) {
         // 移除分隔线
+        text = text.replace(/\*  \*  \*/gm,'');
         return text.replace(/^(---|\*\*\*|___)\s*$/gm, '');
     }
 
