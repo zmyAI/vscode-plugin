@@ -120,7 +120,7 @@ class MarkdownFormatter {
     /**
      * 合并多个连续空行
      */
-    mergeConsecutiveEmptyLines(text) {        
+    mergeConsecutiveEmptyLines(text) {
         // 合并多个连续空行为一个空行
         return text.replace(/(\s*\r?\n){3,}/g, '\n\n');
     }

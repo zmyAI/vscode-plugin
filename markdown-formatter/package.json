@@ -2,7 +2,7 @@
   "name": "doc-platform-markdown-optimizer",
   "displayName": "文档平台导出的 Markdown 文件格式优化器",
   "description": "专注于优化文档平台导出的 Markdown 文件格式，清理多余标签和符号，优化换行和空行，让导入到其他编辑器或博客系统的文档更加规整。",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -20,22 +20,31 @@
       },
       {
         "command": "doc-platform-markdown-optimizer.formatCubox",
-        "title": "优化Cubox导出Markdown文件"
+        "title": "优化Cubox导出的Markdown文件"
+      },
+      {
+        "command": "doc-platform-markdown-optimizer.formatVuePress",
+        "title": "优化VuePress的Markdown文件"
       }
     ],
     "menus": {
-      "editor/context": [
-        {
-          "when": "resourceLangId == markdown",
-          "command": "doc-platform-markdown-optimizer.format",
-          "group": "1_modification"
-        },
-        {
-          "when": "resourceLangId == markdown",
-          "command": "doc-platform-markdown-optimizer.formatCubox",
-          "group": "1_modification"
-        }
-      ]
-    }
+        "editor/context": [
+          {
+            "when": "resourceLangId == markdown",
+            "command": "doc-platform-markdown-optimizer.format",
+            "group": "1_modification"
+          },
+          {
+            "when": "resourceLangId == markdown",
+            "command": "doc-platform-markdown-optimizer.formatCubox",
+            "group": "1_modification"
+          },
+          {
+            "when": "resourceLangId == markdown",
+            "command": "doc-platform-markdown-optimizer.formatVuePress",
+            "group": "1_modification"
+          }
+        ]
+      }
   }
 }

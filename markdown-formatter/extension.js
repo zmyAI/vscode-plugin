@@ -3,6 +3,8 @@ const { MarkdownFormatter } = require('./formatter');
 const formatter = new MarkdownFormatter();
 const { CuboxMarkdownFormatter } = require('./formatter-cubox');
 const cuboxFormatter = new CuboxMarkdownFormatter();
+const { VuePressMarkdownFormatter } = require('./formatter-vuepress');
+const vuepressFormatter = new VuePressMarkdownFormatter();
 
 /**
  * 激活插件
@@ -51,8 +53,30 @@ function activate(context) {
         vscode.window.showInformationMessage('Cubox导出Markdown优化成功！');
     });
 
+    // 注册VuePress文档格式化命令
+    const vuepressDisposable = vscode.commands.registerTextEditorCommand('doc-platform-markdown-optimizer.formatVuePress', function(textEditor) {
+        // 获取编辑器中的文档
+        const document = textEditor.document;
+        const text = document.getText();
+
+        // 使用VuePress特定格式化器
+        const formattedText = vuepressFormatter.formatVuePress(text);
+
+        // 替换文档内容
+        const firstLine = document.lineAt(0);
+        const lastLine = document.lineAt(document.lineCount - 1);
+        const range = new vscode.Range(firstLine.range.start, lastLine.range.end);
+
+        textEditor.edit(editBuilder => {
+            editBuilder.replace(range, formattedText);
+        });
+
+        vscode.window.showInformationMessage('VuePress导出Markdown优化成功！');
+    });
+
     context.subscriptions.push(disposable);
     context.subscriptions.push(cuboxDisposable);
+    context.subscriptions.push(vuepressDisposable);
 }
 
 /**
