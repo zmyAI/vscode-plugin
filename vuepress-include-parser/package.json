@@ -1,0 +1,45 @@
+{
+  "name": "vuepress-include-parser",
+  "displayName": "VuePress Include Parser",
+  "description": "将VuePress文档中的<!-- @include:xxx.md -->标记替换为对应文件的内容",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vuepress-include-parser.parse",
+        "title": "解析VuePress Include标记"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceLangId == markdown",
+          "command": "vuepress-include-parser.parse",
+          "group": "1_modification"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vuepress",
+    "markdown",
+    "include",
+    "parser"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vscode": "^1.1.37"
+  }
+}
