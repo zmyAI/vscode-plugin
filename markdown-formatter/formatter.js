@@ -52,10 +52,10 @@ class MarkdownFormatter {
      * 删除特定HTML标签
      */
     removeSpecificHtmlTags(text) {
-        // 删除font标签，但保留其内容
-        text = text.replace(/<\/?font[^>]*>/g, '');
-        // 删除br标签
-        text = text.replace(/<br \/>/g, '\n');
+        // 删除font标签（包括有空格的版本，如 < font>），但保留其内容
+        text = text.replace(/<\s*\/?\s*font[^>]*>/g, '');
+        // 删除br标签（包括有空格的版本）
+        text = text.replace(/<\s*br\s*\/?\s*>/g, '\n');
 
         return text;
     }
